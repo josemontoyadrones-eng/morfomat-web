@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MORFOMAT Ingeniería S.A.S. Servicios de geomática, fotogrametría, drones, agricultura de precisión y geotecnia.">
+  <title>MORFOMAT Ingeniería S.A.S. | Ingeniería y tecnología</title>
+  <style>
+    :root {
+      --navy: #102b46;
+      --blue: #1e5b83;
+      --green: #72a889;
+      --light: #f4f7f8;
+      --text: #263746;
+      --muted: #667887;
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, 90%); margin: auto; }
+
+    header {
+      background: white;
+      border-bottom: 1px solid #e5ebef;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { font-weight: 800; font-size: 23px; color: var(--navy); }
+    .brand span { color: var(--green); }
+    .navlinks { display: flex; gap: 24px; align-items: center; }
+    .navlinks a:hover { color: var(--blue); }
+
+    .button {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 7px;
+      background: var(--green);
+      color: white;
+      font-weight: 700;
+      border: 0;
+      cursor: pointer;
+    }
+    .button:hover { filter: brightness(.93); }
+    .button.secondary { background: transparent; border: 1px solid white; }
+
+    .hero {
+      color: white;
+      padding: 100px 0;
+      background:
+        radial-gradient(ellipse at 85% 20%, #397a83 0%, transparent 35%),
+        linear-gradient(120deg, #102b46, #1e5b83);
+    }
+    .hero-content { max-width: 760px; }
+    .eyebrow {
+      color: #b7dfc6;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    h1 { font-size: clamp(36px, 6vw, 60px); line-height: 1.1; margin: 18px 0; }
+    .hero p { font-size: 18px; max-width: 650px; color: #e1eaf0; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
+    section { padding: 76px 0; scroll-margin-top: 76px; }
+    section.alt { background: var(--light); }
+    .section-title { font-size: 34px; color: var(--navy); margin: 0 0 12px; }
+    .section-intro { color: var(--muted); max-width: 720px; margin-bottom: 32px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .card {
+      background: white;
+      border: 1px solid #e3eaf0;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 20px #102b4608;
+    }
+    .card h3 { color: var(--navy); margin: 12px 0 8px; }
+    .card p { color: var(--muted); }
+    .symbol { font-size: 30px; }
+    .text-link { color: var(--blue); font-weight: bold; }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 42px;
+      align-items: start;
+    }
+    .tag-list { display: flex; gap: 10px; flex-wrap: wrap; }
+    .tag {
+      padding: 7px 12px;
+      border-radius: 30px;
+      background: #e7f0eb;
+      color: #285840;
+      font-size: 14px;
+    }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0; }
+    .filter {
+      border: 1px solid #ccd7df;
+      background: white;
+      padding: 9px 16px;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+    .filter.active { background: var(--navy); color: white; border-color: var(--navy); }
+    .project-visual {
+      min-height: 140px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #dbe8e6, #b5d0d5);
+      display: grid;
+      place-items: center;
+      font-size: 42px;
+    }
+    .note { font-size: 14px; color: var(--muted); }
+
+    .contact-box {
+      background: var(--navy);
+      color: white;
+      padding: 38px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .contact-box h3 { font-size: 26px; margin: 0 0 8px; }
+    footer { background: #0b2034; color: white; padding: 28px 0; }
+    footer p { margin: 4px 0; color: #d0dbe3; font-size: 14px; }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 20;
+      background: #168c58;
+      color: white;
+      border-radius: 30px;
+      padding: 13px 18px;
+      box-shadow: 0 4px 16px #0003;
+      font-weight: bold;
+    }
+
+    @media (max-width: 760px) {
+      .navlinks { gap: 12px; font-size: 13px; flex-wrap: wrap; justify-content: flex-end; }
+      nav { padding: 14px 0; align-items: flex-start; }
+      .brand { font-size: 19px; }
+      .grid, .about { grid-template-columns: 1fr; }
+      .hero { padding: 70px 0; }
+      section { padding: 55px 0; }
+      .contact-box { flex-direction: column; align-items: flex-start; padding: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="container">
+    <a class="brand" href="#inicio">MORFO<span>MAT</span></a>
+    <div class="navlinks">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="container hero-content">
+      <div class="eyebrow">Ingeniería · Geomática · Tecnología</div>
+      <h1>Información precisa para transformar el territorio.</h1>
+      <p>
+        En MORFOMAT Ingeniería S.A.S. integramos conocimiento técnico
+        y herramientas geoespaciales para apoyar proyectos de ingeniería,
+        gestión territorial y análisis del entorno.
+      </p>
+      <div class="actions">
+        <a class="button" href="#servicios">Explorar servicios</a>
+        <a class="button secondary" data-whatsapp href="#">Cotizar por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="nosotros">
+    <div class="container about">
+      <div>
+        <div class="eyebrow">Conócenos</div>
+        <h2 class="section-title">Quiénes somos</h2>
+        <p>
+          MORFOMAT Ingeniería S.A.S. es una empresa orientada a brindar
+          soluciones técnicas mediante ingeniería, información geográfica,
+          análisis del terreno y tecnologías de captura de datos.
+        </p>
+        <p>
+          Nuestro enfoque es convertir los datos en información útil para
+          la planificación, el análisis y la toma de decisiones.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Nuestro enfoque</h3>
+        <p>Precisión, tecnología y soluciones adaptadas a las necesidades de cada proyecto.</p>
+        <div class="tag-list">
+          <span class="tag">Geomática</span>
+          <span class="tag">Drones</span>
+          <span class="tag">Geotecnia</span>
+          <span class="tag">SIG</span>
+          <span class="tag">Territorio</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="servicios">
+    <div class="container">
+      <div class="eyebrow">Qué hacemos</div>
+      <h2 class="section-title">Nuestros servicios</h2>
+      <p class="section-intro">
+        Soluciones técnicas para proyectos de ingeniería, territorio y
+        análisis geoespacial. Consulta cada área y solicita una cotización.
+      </p>
+      <div class="grid">
+        <article class="card">
+          <div class="symbol">📐</div>
+          <h3>Topografía y geomática</h3>
+          <p>Levantamientos, cartografía y generación de información georreferenciada.</p>
+          <a class="text-link" data-service="Topografía y geomática" href="#contacto">Consultar servicio →</a>
+        </article>
+        <article class="card">
+          <div class="symbol">🛰️</div>
+          <h3>Fotogrametría y drones</h3>
+          <p>Ortomosaicos, modelos de superficie, reconstrucción 3D y análisis del terreno.</p>
+          <a class="text-link" data-service="Fotogrametría y drones" href="#contacto">Consultar servicio →</a>
+        </article>
+        <article class="card">
+          <div class="symbol">🌱</div>
+          <h3>Agricultura de precisión</h3>
+          <p>Información multiespectral, índices de vegetación y análisis de cultivos.</p>
+          <a class="text-link" data-service="Agricultura de precisión" href="#contacto">Consultar servicio →</a>
+        </article>
+        <article class="card">
+          <div class="symbol">⛰️</div>
+          <h3>Geología y geotecnia</h3>
+          <p>Estudios y análisis del terreno, de acuerdo con el alcance de cada proyecto.</p>
+          <a class="text-link" data-service="Geología y geotecnia" href="#contacto">Consultar servicio →</a>
+        </article>
+        <article class="card">
+          <div class="symbol">🗺️</div>
+          <h3>SIG y teledetección</h3>
+          <p>Análisis espacial, cartografía temática y procesamiento de información geográfica.</p>
+          <a class="text-link" data-service="SIG y teledetección" href="#contacto">Consultar servicio →</a>
+        </article>
+        <article class="card">
+          <div class="symbol">🏗️</div>
+          <h3>Consultoría de ingeniería</h3>
+          <p>Apoyo técnico para la planificación, evaluación y seguimiento de proyectos.</p>
+          <a class="text-link" data-service="Consultoría de ingeniería" href="#contacto">Consultar servicio →</a>
+        </article>
+      </div>
+      <p class="note">Publica únicamente los servicios que MORFOMAT esté en capacidad de ofrecer directamente o mediante profesionales habilitados.</p>
+    </div>
+  </section>
+
+  <section id="proyectos">
+    <div class="container">
+      <div class="eyebrow">Nuestro trabajo</div>
+      <h2 class="section-title">Portafolio de proyectos</h2>
+      <p class="section-intro">
+        Presenta aquí trabajos, mapas, modelos y resultados que puedas
+        mostrar públicamente. Los siguientes son espacios de ejemplo.
+      </p>
+      <div class="filters">
+        <button class="filter active" data-filter="Todos">Todos</button>
+        <button class="filter" data-filter="Geomática">Geomática</button>
+        <button class="filter" data-filter="Drones">Drones</button>
+        <button class="filter" data-filter="Agricultura">Agricultura</button>
+      </div>
+      <div class="grid" id="project-grid">
+        <article class="card project" data-category="Geomática">
+          <div class="project-visual">📍</div>
+          <h3>Proyecto de geomática</h3>
+          <p>Agrega aquí una descripción breve de un trabajo real.</p>
+        </article>
+        <article class="card project" data-category="Drones">
+          <div class="project-visual">🛩️</div>
+          <h3>Levantamiento con drones</h3>
+          <p>Agrega aquí los productos generados y su aplicación.</p>
+        </article>
+        <article class="card project" data-category="Agricultura">
+          <div class="project-visual">🌿</div>
+          <h3>Análisis de cultivos</h3>
+          <p>Agrega aquí mapas, imágenes o resultados autorizados.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="contacto">
+    <div class="container">
+      <div class="contact-box">
+        <div>
+          <div class="eyebrow">Hablemos de tu proyecto</div>
+          <h3>¿Necesitas una solución técnica?</h3>
+          <p>Escríbenos para conversar sobre el servicio que necesitas.</p>
+          <p>WhatsApp: +57 317 701 3595</p>
+        </div>
+        <a class="button" data-whatsapp href="#">Solicitar cotización →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <strong>MORFOMAT Ingeniería S.A.S.</strong>
+    <p>Ingeniería, geomática y tecnología aplicada al territorio.</p>
+    <p>© <span id="year"></span> MORFOMAT Ingeniería S.A.S.</p>
+  </div>
+</footer>
+
+<a class="whatsapp-float" data-whatsapp href="#" aria-label="Cotizar por WhatsApp">WhatsApp ↗</a>
+
+<script>
+  // Número de WhatsApp en formato internacional: Colombia +57.
+  const phone = "573177013595";
+  const baseMessage = "Hola, quiero cotizar un servicio con MORFOMAT INGENIERÍA S.A.S.";
+
+  document.querySelectorAll("[data-whatsapp]").forEach(link => {
+    link.href = "https://wa.me/" + phone + "?text=" + encodeURIComponent(baseMessage);
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+  });
+
+  document.querySelectorAll("[data-service]").forEach(link => {
+    link.href = "https://wa.me/" + phone + "?text=" +
+      encodeURIComponent(baseMessage + " Me interesa: " + link.dataset.service + ".");
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+  });
+
+  document.querySelectorAll("[data-filter]").forEach(button => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll("[data-filter]").forEach(item =>
+        item.classList.remove("active")
+      );
+      button.classList.add("active");
+      document.querySelectorAll(".project").forEach(project => {
+        project.hidden = button.dataset.filter !== "Todos" &&
+          project.dataset.category !== button.dataset.filter;
+      });
+    });
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
